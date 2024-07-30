@@ -1,3 +1,4 @@
-nodejs 22.5.1
+nodejs   22.5.1
 postgres 16.3
-ruby 3.3.4
+ruby     3.3.4
+redis    7.4.0

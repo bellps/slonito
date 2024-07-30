@@ -74,3 +74,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+gem 'tailwindcss-rails', '~> 2.6'
+gem 'view_component', '~> 3.13'
+gem 'slim-rails', '~> 3.6', '>= 3.6.3'
