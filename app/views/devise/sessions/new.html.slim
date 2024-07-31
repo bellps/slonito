@@ -1,6 +1,6 @@
 div class="sm:mx-auto sm:w-full sm:max-w-sm"
   img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=rose&shade=500" alt="Your Company"
-  h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100" Entrar
+  h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100" Sign in
 
 div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -14,7 +14,7 @@ div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
         .flex.items-center.justify-between
           = f.label :password, class: "block text-sm font-medium leading-6 text-gray-100"
           .text-sm
-            = link_to 'Esqueceu a senha?', new_password_path(resource_name), class: 'font-semibold text-green-400 hover:text-green-300'
+            = link_to 'Forgot your password?', new_password_path(resource_name), class: 'font-semibold text-green-400 hover:text-green-300'
         .mt-2
           = f.password_field :password, autocomplete: "current-password", class: "block w-full rounded-md border-0 py-1.5 text-white bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6", required: true
 
@@ -27,5 +27,5 @@ div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
         button type="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500" Log in
 
   p class="mt-10 text-center text-sm text-gray-400"
-    = 'Não tem uma conta? '
-    = link_to 'Crie aqui!', new_registration_path(resource_name), class: 'font-semibold leading-6 text-green-400 hover:text-rose-500'
+    = 'Does not have an account? '
+    = link_to 'Sign up!', new_registration_path(resource_name), class: 'font-semibold leading-6 text-green-400 hover:text-rose-500'
