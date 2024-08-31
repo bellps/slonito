@@ -11,13 +11,13 @@
             </svg>
 
           </div>
-          <input type="text" id="simple-search" class="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search branch name..." required />
+          <input type="text" id="simple-search" class="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search..." required />
       </div>
   </form>
 
   <div class="h-full px-3 py-4 overflow-y-auto bg-stone-50 dark:bg-stone-800">
     <ul class="space-y-2 font-medium">
-      <%- 20.times do |i| %>
+      <%- 5.times do |i| %>
         <%= render ::ContextButtonComponent.new(name: "My database #{i}", dom_id: "my_database_#{i}") %>
       <% end %>
     </ul>
