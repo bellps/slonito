@@ -1,0 +1,76 @@
+<div class="md:ml-64 flex flex-col">
+  <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white dark:bg-gray-700">
+    <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar"
+      type="button"
+      class="px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500 md:hidden">
+      <span class="sr-only">Open sidebar</span>
+      <!-- Heroicon name: outline/menu-alt-2 -->
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+      </svg>
+    </button>
+
+
+    <div class="flex-1 px-4 flex justify-between">
+      <div class="flex-1 flex">
+        <div class="flex-shrink-0 flex items-center">
+          <img class="mx-auto h-10 w-auto " src="https://tailwindui.com/img/logos/mark.svg?color=rose&shade=500"
+            alt="Workflow">
+          <span
+            class="ml-2 self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Slonito</span>
+        </div>
+      </div>
+
+
+      <div class="ml-4 flex items-center md:ml-6">
+        <button type="button"
+          class="bg-white dark:bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 focus:border-rose-500">
+          <span class="sr-only">Help</span>
+
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+          </svg>
+
+        </button>
+
+        <!-- Profile dropdown -->
+        <div class="ml-3 relative">
+          <div class="flex items-center">
+            <div class="flex items-center ms-3">
+              <div>
+                <button type="button"
+                  class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                  aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                  <span class="sr-only">Open user menu</span>
+                  <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    alt="user photo">
+                </button>
+              </div>
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-800 dark:divide-gray-700"
+                id="dropdown-user">
+                <div class="px-4 py-3" role="none">
+                  <p class="text-sm text-gray-900 dark:text-white" role="none">
+                    Me
+                  </p>
+                  <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                    <%= helpers.current_user.email %>
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
+                  <li>
+                    <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'block', form_class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white', role: 'menuitem' %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -17,7 +17,7 @@ div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
         .mt-2
           = f.password_field :password, autocomplete: "new-password", class: "block w-full rounded-md border-0 py-1.5 text-white bg-gray-800 shadow-sm ring-1 ring-inset ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-500 sm:text-sm sm:leading-6", required: true
         - if @minimum_password_length
-          em class="mt-1 text-xs text-gray-400" = "(mínimo de #{@minimum_password_length} caracteres)"
+          em class="mt-1 text-xs text-gray-400" = "(#{@minimum_password_length} characters minimum)"
 
       .field
         = f.label :password_confirmation, class: "block text-sm font-medium leading-6 text-gray-100"

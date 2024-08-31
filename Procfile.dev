@@ -1,4 +1,5 @@
 postgres: postgres
+redis: redis-server
 web: env RUBY_DEBUG_OPEN=true bin/rails s -p 3000
 js: yarn build --watch
 css: yarn build:css --watch

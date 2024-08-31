@@ -1,7 +1,7 @@
 - if resource.errors.any?
-  #error_explanation data-turbo-cache="false"
-    h2 class="text-red-500"
+  #error_explanation data-turbo-cache="false" class="mb-4 p-4 border border-red-500 bg-red-200 rounded-md shadow-sm"
+    h2 class="text-red-700 font-bold"
       = I18n.t('errors.messages.not_saved', count: resource.errors.count, resource: resource.class.model_name.human.downcase)
-    ul class="mt-2 text-red-400"
+    ul class="mt-2 text-red-600"
       - resource.errors.full_messages.each do |message|
         li = message
