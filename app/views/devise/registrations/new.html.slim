@@ -1,6 +1,6 @@
 div class="sm:mx-auto sm:w-full sm:max-w-sm"
-  img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=rose&shade=500" alt="Your Company"
-  h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-stone-100" Sign up
+  = render(::SlonitoLogoComponent.new(size: 16, extra_classes: 'mx-auto w-auto'))
+  h2 class="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-stone-100" Sign up
 
 div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|

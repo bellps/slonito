@@ -1,5 +1,5 @@
 doctype html
-html
+html class='h-full dark'
   head
     title Slonito
     meta name="viewport" content="width=device-width,initial-scale=1"
@@ -9,5 +9,5 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
 
-  body class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-stone-900 text-white"
+  body class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 dark:bg-stone-900 text-white"
     = yield

@@ -6,8 +6,8 @@ module.exports = {
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}',
-    './app/components/*.{erb,haml,html,slim}',
+    './app/views/**/*.{erb,haml,html,slim,html.slim}',
+    './app/components/*.{erb,haml,html,slim,html.slim}',
     './node_modules/flowbite/**/*.js'
   ],
   theme: {

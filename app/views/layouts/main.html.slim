@@ -1,5 +1,5 @@
 doctype html
-html class="h-full bg-stone-50 dark:bg-stone-700 dark"
+html class="dark"
   head
     title Slonito
     meta name="viewport" content="width=device-width,initial-scale=1"
@@ -9,6 +9,6 @@ html class="h-full bg-stone-50 dark:bg-stone-700 dark"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
 
-  body class="h-full"
+  body class="bg-stone-50 dark:bg-stone-700"
     div
       = yield
