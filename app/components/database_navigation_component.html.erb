@@ -1,35 +1,35 @@
 <aside id="sidebar-multi-level-sidebar"
-  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0"
+  class="fixed flex flex-col flex-1 top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0 bg-stone-50 dark:bg-stone-800"
   aria-label="Sidebar">
 
-  <form class="flex items-center justify-center p-3 w-full lg:flex bg-stone-50 dark:bg-stone-800" >
-      <label for="simple-search" class="sr-only">Search</label>
-      <div class="relative w-full">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg class="w-4 h-4 text-stone-500 dark:text-stone-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-            </svg>
-
-          </div>
-          <input type="text" id="simple-search" class="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search..." required />
+  <form class="flex-none flex items-center justify-center p-3 w-full lg:flex" >
+    <label for="simple-search" class="sr-only">Search</label>
+    <div class="relative w-full">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <svg class="w-4 h-4 text-stone-500 dark:text-stone-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
       </div>
+
+      <input type="text" id="simple-search" class="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search..." required />
+    </div>
   </form>
 
-  <div class="h-full px-3 py-4 overflow-y-auto bg-stone-50 dark:bg-stone-800">
+  <div class="grow px-3 py-4 overflow-y-auto ">
     <ul class="space-y-2 font-medium">
-      <%- 5.times do |i| %>
+      <%- 20.times do |i| %>
         <%= render ::ContextButtonComponent.new(name: "My database #{i}", dom_id: "my_database_#{i}") %>
       <% end %>
     </ul>
   </div>
 
-  <div class="absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full lg:flex bg-white dark:bg-stone-800 z-20 border-r border-stone-200 dark:border-stone-700">
+  <div class="flex-none flex justify-center p-4 space-x-4 w-full z-20 bg-stone-50 dark:bg-stone-800">
     <button type="button" class="flex items-center text-green-700 hover:text-white border border-green-700 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
       <svg class="mr-1 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
       </svg>
 
-      New structure
+      New chat
     </button>
   </div>
 </aside>
