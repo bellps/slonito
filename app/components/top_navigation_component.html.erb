@@ -1,8 +1,8 @@
-<nav class="flex-row fixed w-full top-0 z-10 flex-shrink-0 flex h-16 bg-white dark:bg-stone-700">
+<nav class="flex-row sticky w-full top-0 z-10 flex-shrink-0 flex h-16 bg-white dark:bg-stone-700">
 
   <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar"
     type="button"
-    class="px-4 text-stone-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500 md:hidden">
+    class="pr-4 text-stone-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500 md:hidden">
     <span class="sr-only">Open sidebar</span>
     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
       aria-hidden="true">
@@ -10,20 +10,16 @@
     </svg>
   </button>
 
-  <div class="md:ml-64 flex-1 px-4 flex justify-between">
-
+  <div class="flex-1 flex justify-between">
     <!-- Logo -->
     <div class="flex-1 flex">
       <div class="flex-shrink-0 flex items-center">
-
         <%= render(::SlonitoLogoComponent.new) %>
-
         <span class="ml-2 self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
           Slonito
         </span>
       </div>
     </div>
-
 
     <div class="ml-4 flex items-center md:ml-6">
       <!-- Help button -->
