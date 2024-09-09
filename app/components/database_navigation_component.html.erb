@@ -2,8 +2,9 @@
   class="fixed flex flex-col flex-1 top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0 bg-stone-50 dark:bg-stone-800"
   aria-label="Sidebar">
 
-  <form class="flex-none flex items-center justify-center p-3 w-full lg:flex" >
-    <label for="simple-search" class="sr-only">Search</label>
+  <%= form_with(url: helpers.chats_path, data: { turbo_frame: "chats", controller: "form-submission" }, method: "GET", html: { class: "flex-none flex items-center justify-center p-3 w-full lg:flex" }) do |form| %>
+    <label for="query" class="sr-only">Search</label>
+
     <div class="relative w-full">
       <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg class="w-4 h-4 text-stone-500 dark:text-stone-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -11,15 +12,13 @@
         </svg>
       </div>
 
-      <input type="text" id="simple-search" class="bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5  dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search..." required />
+      <%= form.text_field :query, data: { action: "input->form-submission#search" }, class: "a bg-stone-50 border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full ps-10 p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500", placeholder: "Search..." %>
     </div>
-  </form>
+  <% end %>
 
   <div class="grow px-3 py-4 overflow-y-auto ">
     <ul class="space-y-2 font-medium">
-      <%- 10.times do |i| %>
-        <%= render ::ContextButtonComponent.new(name: "My database #{i}", dom_id: "my_database_#{i}") %>
-      <% end %>
+      <%= render "chats/chats", chats: @chats %>
     </ul>
   </div>
 

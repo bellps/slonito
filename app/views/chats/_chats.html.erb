@@ -1,0 +1,3 @@
+<%= turbo_frame_tag 'chats' do %>
+  <%= render ::ChatButtonComponent.with_collection(@chats) %>
+<% end %>

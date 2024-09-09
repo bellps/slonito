@@ -1,4 +1,4 @@
-<%= render(::DatabaseNavigationComponent.new) %>
+<%= render(::DatabaseNavigationComponent.new(chats: @chats)) %>
 
 <main class="md:ml-64 flex flex-col h-screen">
   <div id="chat-parent" class="flex flex-col flex-1 h-screen">

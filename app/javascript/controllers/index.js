@@ -3,6 +3,6 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import FormSubmissionController from "./form_submission_controller"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+application.register("form-submission", FormSubmissionController)
