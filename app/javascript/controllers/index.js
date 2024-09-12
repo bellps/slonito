@@ -4,5 +4,7 @@
 
 import { application } from "./application"
 import FormSubmissionController from "./form_submission_controller"
+import ModalController from "./modal_controller"
 
 application.register("form-submission", FormSubmissionController)
+application.register("modal", ModalController)

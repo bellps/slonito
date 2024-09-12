@@ -1,0 +1,39 @@
+<%= turbo_frame_tag "new_chat_modal_frame" do %>
+  <%= form_with(model: @chat, html: { class: "" }) do |form| %>
+    <div class="mt-0 px-4 md:p-5 space-y-4">
+      <div class="w-full">
+        <% if @chat.errors.any? %>
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-900 dark:text-red-300" role="alert">
+            <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <span class="font-medium">Ensure that these requirements are met:</span>
+              <ul class="mt-1.5 list-disc list-inside">
+                <%- @chat.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+
+        <div>
+          <%= form.label :name, class: "block mb-2 text-sm font-medium text-stone-900 dark:text-white" %>
+          <%= form.text_field :name, required: true, data: { action: "" }, class: "block p-2.5 w-full text-sm text-stone-900 bg-stone-50 rounded-lg border border-stone-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-stone-600 dark:border-stone-500 dark:placeholder-stone-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "My awesome chat 1" %>
+        </div>
+
+        <div>
+          <%= form.label :raw_schema, class: "block mb-2 text-sm font-medium text-stone-900 dark:text-white" %>
+          <%= form.text_area :raw_schema, required: true, data: { action: "" }, class: "block p-2.5 w-full text-sm text-stone-900 bg-stone-50 rounded-lg border border-stone-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-stone-600 dark:border-stone-500 dark:placeholder-stone-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "CREATE TABLE..." %>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end items-center p-4 md:p-5 border-t border-stone-200 rounded-b dark:border-stone-600">
+      <%= form.submit 'Save', class: "py-2.5 px-5 ms-3 text-sm font-medium text-stone-900 focus:outline-none bg-white rounded-lg border border-stone-200 hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-100 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700" %>
+      <button data-action="click->modal#cancel" data-modal-hide="new_chat_modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-stone-900 focus:outline-none bg-white rounded-lg border border-stone-200 hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-100 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700">Close</button>
+    </div>
+  <% end %>
+<% end %>
