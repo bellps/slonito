@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @chats = Chat.where(user_id: current_user.id)
+    @chats = Chat.where(user_id: current_user.id).order(created_at: :desc)
 
     return if params[:query].blank?
 
@@ -18,9 +18,7 @@ class ChatsController < ApplicationController
     @chat.user_id = current_user.id
 
     if @chat.save
-      respond_to do |format|
-        format.turbo_stream
-      end
+      respond_to(&:turbo_stream)
     else
       render :new, status: :unprocessable_entity
     end

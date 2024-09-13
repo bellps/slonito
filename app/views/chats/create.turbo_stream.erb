@@ -1,1 +1,2 @@
-<%= turbo_stream.prepend "chats", ::ChatButtonComponent.new(@chat) %>
+<%= turbo_stream.prepend "chats", ::ChatButtonComponent.new(chat: @chat) %>
+<%= turbo_stream.prepend "notifications", ::SuccessToastComponent.new(message: 'Your new chat has been created!') %>
