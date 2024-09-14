@@ -1,3 +1,3 @@
 class ChatMessage < ApplicationRecord
-  belongs_to :chat
+  belongs_to :chat, inverse_of: :messages
 end
