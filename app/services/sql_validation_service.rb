@@ -21,9 +21,10 @@ class SqlValidationService
     @valid
   end
 
-  attr_accessor :parsed_result, :error
+  attr_reader :parsed_result, :error
 
   private
 
+  attr_writer :parsed_result, :error
   attr_accessor :script, :valid
 end

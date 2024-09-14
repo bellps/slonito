@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "new_chat_modal_frame" do %>
   <%= form_with(model: @chat, html: { class: "" }) do |form| %>
-    <div class="mt-0 px-4 md:p-5 space-y-4">
-      <div class="w-full">
+    <div class="mt-0 px-4 md:p-5">
+      <div class="w-full space-y-4">
         <% if @chat.errors.any? %>
           <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-900 dark:text-red-300" role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -19,21 +19,21 @@
           </div>
         <% end %>
 
-        <div>
+        <div class="field">
           <%= form.label :name, class: "block mb-2 text-sm font-medium text-stone-900 dark:text-white" %>
-          <%= form.text_field :name, required: true, data: { action: "" }, class: "block p-2.5 w-full text-sm text-stone-900 bg-stone-50 rounded-lg border border-stone-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-stone-600 dark:border-stone-500 dark:placeholder-stone-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "My awesome chat 1" %>
+          <%= form.text_field :name, required: true, data: { action: "" }, class: "block p-2.5 w-full text-sm text-stone-900 bg-stone-50 rounded-lg border border-stone-300 focus:ring-green-500 focus:border-green-500 dark:bg-stone-600 dark:border-stone-500 dark:placeholder-stone-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500", placeholder: "My awesome chat 1" %>
         </div>
 
-        <div>
+        <div class="field">
           <%= form.label :raw_schema, class: "block mb-2 text-sm font-medium text-stone-900 dark:text-white" %>
-          <%= form.text_area :raw_schema, required: true, data: { action: "" }, class: "block p-2.5 w-full text-sm text-stone-900 bg-stone-50 rounded-lg border border-stone-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-stone-600 dark:border-stone-500 dark:placeholder-stone-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "CREATE TABLE..." %>
+          <%= form.text_area :raw_schema, required: true, data: { action: "" }, class: "block p-2.5 w-full text-sm text-stone-900 bg-stone-50 rounded-lg border border-stone-300 focus:ring-green-500 focus:border-green-500 dark:bg-stone-600 dark:border-stone-500 dark:placeholder-stone-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500", placeholder: "CREATE TABLE...", rows: 12 %>
         </div>
       </div>
     </div>
 
     <div class="flex justify-end items-center p-4 md:p-5 border-t border-stone-200 rounded-b dark:border-stone-600">
-      <%= form.submit 'Save', class: "py-2.5 px-5 ms-3 text-sm font-medium text-stone-900 focus:outline-none bg-white rounded-lg border border-stone-200 hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-100 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700" %>
-      <button data-action="click->modal#cancel" data-modal-hide="new_chat_modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-stone-900 focus:outline-none bg-white rounded-lg border border-stone-200 hover:bg-stone-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-stone-100 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700">Close</button>
+      <%= form.submit 'Save', class: "cursor-pointer text-sm rounded-lg focus:z-10 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" %>
+      <button data-action="click->modal#cancel" data-modal-hide="new_chat_modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-stone-900 focus:outline-none bg-white rounded-lg border border-stone-200 hover:bg-stone-100 hover:text-green-700 focus:z-10 focus:ring-4 focus:ring-stone-100 dark:focus:ring-stone-700 dark:bg-stone-800 dark:text-stone-400 dark:border-stone-600 dark:hover:text-white dark:hover:bg-stone-700">Close</button>
     </div>
   <% end %>
 <% end %>
