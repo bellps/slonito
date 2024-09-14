@@ -1,4 +1,4 @@
-<form class="px-5 bottom-0 left-0 right-0 z-39 flex justify-between w-full">
+<%= form_with(url: chats_messages_path, model: @chat.messages.build, data: { turbo_frame: "chat_messages" }, html: { class: "px-5 bottom-0 left-0 right-0 z-39 flex justify-between w-full" }) do |form| %>
   <label for="chat" class="sr-only">Message Slonito</label>
 
   <div class="flex items-center px-3 py-2 rounded-lg bg-stone-50 dark:bg-stone-600 w-full">
@@ -10,7 +10,8 @@
       <span class="sr-only">Check schema</span>
     </button>
 
-    <textarea style="resize: none;" id="chat" rows="1" class="block mx-4 p-2.5 w-full text-sm text-stone-900 bg-white rounded-lg border border-stone-300 focus:ring-rose-500 focus:border-rose-500 dark:bg-stone-600 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500" placeholder="Message Slonito"></textarea>
+    <%= form.text_area :content, rows: '1', style: "resize: none;", class: "block mx-4 p-2.5 w-full text-sm text-stone-900 bg-white rounded-lg border border-stone-300 focus:ring-rose-500 focus:border-rose-500 dark:bg-stone-600 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500", placeholder: "Message Slonito" %>
+    <%= form.hidden_field :chat_id, value: @chat.id %>
 
     <button type="submit" class="inline-flex justify-center p-2 text-rose-600 rounded-full cursor-pointer hover:bg-rose-100 dark:text-rose-500 dark:hover:bg-stone-500">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -20,5 +21,4 @@
       <span class="sr-only">Send message</span>
     </button>
   </div>
-</form>
-
+<% end %>

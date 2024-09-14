@@ -1,4 +1,4 @@
-<div id="chat_container" class="scroll-smooth snap-end w-full h-screen px-4 lg:px-12 sm:px-6 pb-10 flex-grow overflow-y-auto flex flex-col flex-1 gap-6">
+<div id="chat_container" class="scroll-smooth snap-end w-full h-screen px-4 lg:px-12 sm:px-6 pb-10 flex-grow overflow-y-auto flex flex-col flex-1">
   <%= render(::TopNavigationComponent.new) %>
 
   <%= helpers.turbo_frame_tag 'chat_messages' do %>
@@ -7,7 +7,7 @@
 </div>
 
 <div class="bg-opacity-20 w-full flex-none py-6 max-w-7xl mx-auto pt-0 md:pb-8 sm:pb-6 sm:px-6 md:px-6">
-  <%= render(::MessageInputComponent.new) %>
+  <%= render(::MessageInputComponent.new(chat: @chat)) %>
 </div>
 
 <%= render(::ShowSchemaModalComponent.new(chat: @chat)) %>

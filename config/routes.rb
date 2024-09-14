@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :chats
+  resources :chats_messages
 end
