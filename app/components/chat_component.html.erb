@@ -145,7 +145,7 @@
       <%= render(::MessageInputComponent.new) %>
     </div>
 
-<%= render(::ShowSchemaModalComponent.new) %>
+<%= render(::ShowSchemaModalComponent.new(chat: @chat)) %>
 
 <script>
   var objDiv = document.getElementById("chat_container");

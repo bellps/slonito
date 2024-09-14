@@ -3,7 +3,7 @@
 
 <main class="md:ml-64 flex flex-col h-screen">
   <div id="chat-parent" class="flex flex-col flex-1 h-screen">
-    <%= render(::ChatComponent.new) %>
+    <%= turbo_frame_tag 'chat_window' %>
   </div>
   <%= render(::NewChatModalComponent.new) %>
 </main>

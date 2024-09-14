@@ -9,6 +9,10 @@ class ChatsController < ApplicationController
     @chats = @chats.where('name ILIKE ?', "%#{params[:query]}%")
   end
 
+  def show
+    @chat = Chat.find(params[:id])
+  end
+
   def new
     @chat = Chat.new
   end
