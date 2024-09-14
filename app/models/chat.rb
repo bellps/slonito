@@ -1,6 +1,9 @@
 class Chat < ApplicationRecord
   belongs_to :user
 
+  normalize_attributes :name, with: %i[blank squish]
+  normalize_attributes :raw_schema, with: %i[blank strip]
+
   validates :name, :raw_schema, :user_id, presence: true
   validate :schema_with_valid_sql
 

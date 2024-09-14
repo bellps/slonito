@@ -60,7 +60,7 @@
               </div>
               <ul class="py-1" role="none">
                 <li>
-                  <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'block', form_class: 'block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-white', role: 'menuitem' %>
+                  <%= button_to 'Sign out', destroy_user_session_path, data: { turbo_frame: '_top' }, method: :delete, class: 'block', form_class: 'block px-4 py-2 text-sm text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-700 dark:hover:text-white', role: 'menuitem' %>
                 </li>
               </ul>
             </div>

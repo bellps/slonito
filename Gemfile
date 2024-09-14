@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.4'
 
+gem 'attribute_normalizer'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise', '~> 4.9'

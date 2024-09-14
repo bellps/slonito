@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  layout 'main'
+
   before_action :authenticate_user!
 
   def index
@@ -11,6 +13,13 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html do
+        @chats = Chat.where(user_id: current_user.id).order(created_at: :desc)
+      end
+    end
   end
 
   def new

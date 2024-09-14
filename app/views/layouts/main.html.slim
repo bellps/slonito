@@ -10,4 +10,9 @@ html class="dark"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
 
   body class="bg-stone-50 dark:bg-stone-700"
+    = turbo_frame_tag 'notifications'
+    = render(::DatabaseNavigationComponent.new(chats: @chats))
+
     = yield
+
+    = render(::NewChatModalComponent.new)
