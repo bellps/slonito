@@ -14,17 +14,11 @@
     </svg>
   </button>
   <ul id="<%= @dom_id %>" class="hidden py-1 space-y-1">
-    <li>
-      <a href="#"
-        class="flex items-center w-full p-1 text-stone-900 transition duration-75 rounded-lg pl-11 group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700">Table 1</a>
-    </li>
-    <li>
-      <a href="#"
-        class="flex items-center w-full p-1 text-stone-900 transition duration-75 rounded-lg pl-11 group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700">Table 2</a>
-    </li>
-    <li>
-      <a href="#"
-        class="flex items-center w-full p-1 text-stone-900 transition duration-75 rounded-lg pl-11 group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700">Table 3</a>
-    </li>
+    <%- @chat.tables.each do |table| %>
+      <li>
+        <a href="#"
+          class="flex items-center w-full p-1 text-stone-900 transition duration-75 rounded-lg pl-11 group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700"><%= table %></a>
+      </li>
+    <% end %>
   </ul>
 </li>
