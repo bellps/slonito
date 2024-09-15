@@ -1,5 +1,6 @@
 class ChatsController < ApplicationController
-  layout 'main'
+  layout false
+  layout 'main', except: :index
 
   before_action :authenticate_user!
 
@@ -16,9 +17,7 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html do
-        @chats = Chat.where(user_id: current_user.id).order(created_at: :desc)
-      end
+      format.html
     end
   end
 

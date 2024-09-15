@@ -1,7 +1,0 @@
-<%= turbo_frame_tag 'chats' do %>
-  <%- if @chats.present? %>
-    <%= render ::ChatButtonComponent.with_collection(@chats) %>
-  <%- else %>
-    <small class="block text-center">Nothing to see here :(</small>
-  <%- end %>
-<% end %>
