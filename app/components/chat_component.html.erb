@@ -16,3 +16,9 @@
   var objDiv = document.getElementById("chat_container");
   objDiv.scrollTop = objDiv.scrollHeight;
 </script>
+
+<%- if @visit %>
+  <script>
+    history.pushState(null, "", "<%= chat_path(@chat) %>");
+  </script>
+<% end %>
