@@ -10,10 +10,10 @@
       <span class="sr-only">Check schema</span>
     </button>
 
-    <%= form.text_area :content, data: { action: "keydown.enter->chat#send" }, rows: '1', style: "resize: none;", class: "block mx-4 p-2.5 w-full text-sm text-stone-900 bg-white rounded-lg border border-stone-300 focus:ring-rose-500 focus:border-rose-500 dark:bg-stone-600 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500", placeholder: "Message Slonito" %>
+    <%= form.text_area :content, required: true, data: { action: "keydown.enter->chat#send", chat_target: 'content' }, rows: '1', style: "resize: none;", class: "block mx-4 p-2.5 w-full text-sm text-stone-900 bg-white rounded-lg border border-stone-300 focus:ring-rose-500 focus:border-rose-500 dark:bg-stone-600 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500", placeholder: "Message Slonito" %>
     <%= form.hidden_field :chat_id, value: @chat.id %>
 
-    <button type="submit" class="inline-flex justify-center p-2 text-rose-600 rounded-full cursor-pointer hover:bg-rose-100 dark:text-rose-500 dark:hover:bg-stone-500">
+    <button data-action="click->chat#send" class="inline-flex justify-center p-2 text-rose-600 rounded-full cursor-pointer hover:bg-rose-100 dark:text-rose-500 dark:hover:bg-stone-500">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
         <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
       </svg>

@@ -10,7 +10,7 @@ class ChatsMessagesController < ApplicationController
     if @message.save
       respond_to(&:turbo_stream)
     else
-      render :new, status: :unprocessable_entity
+      head :unprocessable_entity
     end
   end
 

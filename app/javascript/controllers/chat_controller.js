@@ -1,13 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static targets = [ "content" ]
+
   send(e) {
     e.preventDefault()
 
-    if (e.target.value.trim() != '') {
+    if (this.contentTarget.value.trim() != '') {
       this.element.requestSubmit()
 
-      e.target.value = ''
+      this.contentTarget.value = ''
     }
   }
 }
