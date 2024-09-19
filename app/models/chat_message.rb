@@ -4,4 +4,12 @@ class ChatMessage < ApplicationRecord
   belongs_to :chat, inverse_of: :messages
 
   validates :content, :chat_id, presence: true
+
+  after_create_commit lambda {
+    broadcast_append_to 'messages',
+                        html: ApplicationController.render(
+                          MessageComponent.new(chat_message: self, go_down: true)
+                        ),
+                        target: 'chat_container'
+  }
 end

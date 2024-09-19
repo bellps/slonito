@@ -8,7 +8,7 @@ class ChatsMessagesController < ApplicationController
     @message.is_input = true
 
     if @message.save
-      respond_to(&:turbo_stream)
+      head :ok
     else
       head :unprocessable_entity
     end
