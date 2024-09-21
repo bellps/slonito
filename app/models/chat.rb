@@ -23,4 +23,12 @@ class Chat < ApplicationRecord
       errors.add(:base, "Invalid SQL: #{validator.error}")
     end
   end
+
+  after_create_commit lambda {
+    broadcast_append_to 'notifications_channel',
+                        html: ApplicationController.render(
+                          SuccessToastComponent.new(message: 'Your new chat has been created!')
+                        ),
+                        target: 'notifications_container'
+  }
 end
