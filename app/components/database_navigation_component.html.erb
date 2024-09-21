@@ -17,7 +17,7 @@
   <% end %>
 
   <div class="grow px-3 py-4 overflow-y-auto ">
-    <ul class="space-y-2 font-medium">
+    <ul data-controller="chat-list" class="space-y-2 font-medium">
       <%= helpers.turbo_frame_tag 'chats', src: chats_path %>
     </ul>
   </div>

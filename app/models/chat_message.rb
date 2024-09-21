@@ -5,6 +5,8 @@ class ChatMessage < ApplicationRecord
 
   validates :content, :chat_id, presence: true
 
+  delegate :raw_schema, to: :chat, prefix: true
+
   after_create_commit lambda {
     broadcast_append_to 'messages',
                         html: ApplicationController.render(
