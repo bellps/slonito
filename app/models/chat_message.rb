@@ -8,7 +8,7 @@ class ChatMessage < ApplicationRecord
   delegate :raw_schema, to: :chat, prefix: true
 
   after_create_commit lambda {
-    broadcast_append_to 'messages',
+    broadcast_append_to "messages_from_chat_#{chat_id}",
                         html: ApplicationController.render(
                           MessageComponent.new(chat_message: self, go_down: true)
                         ),

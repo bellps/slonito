@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
-import * as flowbite from 'flowbite';
+import { Modal } from 'flowbite';
 
 export default class extends Controller {
   connect() {
-    this.modal = new flowbite.Modal(this.element)
+    this.modal = new Modal(this.element)
   }
 
   open() {

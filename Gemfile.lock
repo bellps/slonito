@@ -100,6 +100,7 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
+    csv (3.3.0)
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
@@ -133,6 +134,10 @@ GEM
     google-protobuf (4.27.3-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -161,6 +166,8 @@ GEM
     mini_mime (1.1.5)
     minitest (5.24.1)
     msgpack (1.7.2)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     mutex_m (0.2.0)
     net-imap (0.4.14)
       date
@@ -350,6 +357,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   dotenv
+  httparty
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

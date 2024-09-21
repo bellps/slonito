@@ -8,10 +8,12 @@ gem 'attribute_normalizer'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise', '~> 4.9'
-gem 'dotenv', groups: %i[development test]
+gem 'dotenv'
+gem 'httparty'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
+gem 'pg_query', '~> 5.1'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
 gem 'rubocop', require: false
@@ -36,5 +38,3 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
-
-gem "pg_query", "~> 5.1"

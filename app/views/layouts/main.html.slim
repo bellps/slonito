@@ -12,7 +12,7 @@ html class="dark"
   body class="bg-stone-50 dark:bg-stone-700"
     = turbo_include_tags
 
-    = turbo_stream_from 'notifications_channel'
+    = turbo_stream_from "notifications_channel_from_user_#{current_user.id}"
     div id='notifications_container'
 
     = render(::SidebarComponent.new)

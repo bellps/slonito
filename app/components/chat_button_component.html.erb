@@ -1,10 +1,13 @@
 <li class="text-sm">
-  <%= link_to chat_path(@chat), class: "flex items-center w-full p-2 text-stone-900 transition duration-75 rounded-lg group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700", aria_controls: "dropdown_from_#{@dom_id}", data: { collapse_toggle: "dropdown_from_#{@dom_id}", turbo_frame: "chat_window", turbo_action: 'advance', chat_list_target: 'chatItem', chat_id: @dom_id } do %>
+  <%= link_to chat_path(@chat), class: "flex items-center w-full p-2 text-stone-900 transition duration-75 rounded-lg group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700", data: { turbo_frame: "chat_window", turbo_action: 'advance', chat_list_target: 'chatItem', chat_id: @dom_id } do %>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0 w-5 h-5 text-stone-500 transition duration-75 group-hover:text-stone-900 dark:text-stone-400 dark:group-hover:text-white size-6">
-      <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 18.375V5.625ZM21 9.375A.375.375 0 0 0 20.625 9h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5ZM10.875 18.75a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5ZM3.375 15h7.5a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375Zm0-3.75h7.5a.375.375 0 0 0 .375-.375v-1.5A.375.375 0 0 0 10.875 9h-7.5A.375.375 0 0 0 3 9.375v1.5c0 .207.168.375.375.375Z" clip-rule="evenodd" />
+      <path d="M21 6.375c0 2.692-4.03 4.875-9 4.875S3 9.067 3 6.375 7.03 1.5 12 1.5s9 2.183 9 4.875Z" />
+      <path d="M12 12.75c2.685 0 5.19-.586 7.078-1.609a8.283 8.283 0 0 0 1.897-1.384c.016.121.025.244.025.368C21 12.817 16.97 15 12 15s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.285 8.285 0 0 0 1.897 1.384C6.809 12.164 9.315 12.75 12 12.75Z" />
+      <path d="M12 16.5c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 0 0 1.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 0 0 1.897 1.384C6.809 15.914 9.315 16.5 12 16.5Z" />
+      <path d="M12 20.25c2.685 0 5.19-.586 7.078-1.609a8.282 8.282 0 0 0 1.897-1.384c.016.121.025.244.025.368 0 2.692-4.03 4.875-9 4.875s-9-2.183-9-4.875c0-.124.009-.247.025-.368a8.284 8.284 0 0 0 1.897 1.384C6.809 19.664 9.315 20.25 12 20.25Z" />
     </svg>
 
-    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"><%= @chat.name %></span>
+    <span class="text-ellipsis overflow-hidden me-2 flex-1 ms-2 text-left rtl:text-right whitespace-nowrap"><%= @chat.name %></span>
     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="m1 1 4 4 4-4" />
@@ -13,9 +16,25 @@
 
   <ul id="dropdown_from_<%= @dom_id %>" class="hidden py-1 space-y-1">
     <%- @chat.tables.each do |table| %>
-      <li class="flex items-center w-full p-1 text-stone-900 transition duration-75 rounded-lg pl-11 group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700">
-        <%= table %>
+      <li class="flex items-center w-full p-1 text-stone-900 transition duration-75 rounded-lg pl-9 group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0 w-5 h-5 text-stone-500 transition duration-75 group-hover:text-stone-900 dark:text-stone-400 dark:group-hover:text-white size-6">
+          <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 18.375V5.625ZM21 9.375A.375.375 0 0 0 20.625 9h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5ZM10.875 18.75a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5ZM3.375 15h7.5a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375Zm0-3.75h7.5a.375.375 0 0 0 .375-.375v-1.5A.375.375 0 0 0 10.875 9h-7.5A.375.375 0 0 0 3 9.375v1.5c0 .207.168.375.375.375Z" clip-rule="evenodd" />
+        </svg>
+
+        <span class="text-ellipsis overflow-hidden me-2 flex-1 ms-2 text-left rtl:text-right whitespace-nowrap"><%= table %></span>
       </li>
     <% end %>
+
+    <hr class="border-stone-700">
+
+    <li>
+      <%= button_to chat_path(@chat), method: :delete, class: "flex items-center w-full p-1 text-stone-900 transition duration-75 rounded-lg pl-9 group hover:bg-stone-100 dark:text-white dark:hover:bg-stone-700", form: { data: { turbo_frame: "_top", turbo_confirm: 'Are you sure?' } } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0 w-5 h-5 text-stone-500 transition duration-75 group-hover:text-stone-900 dark:text-stone-400 dark:group-hover:text-white size-6">
+          <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clip-rule="evenodd" />
+        </svg>
+
+        <span class="text-ellipsis overflow-hidden me-2 flex-1 ms-2 text-left rtl:text-right whitespace-nowrap">Delete</span>
+      <% end %>
+    </li>
   </ul>
 </li>

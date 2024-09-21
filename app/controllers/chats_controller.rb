@@ -36,6 +36,13 @@ class ChatsController < ApplicationController
     end
   end
 
+  def destroy
+    @chat = Chat.where(id: params[:id], user_id: current_user.id).first!
+    @chat.destroy
+
+    respond_to(&:turbo_stream)
+  end
+
   private
 
   def chat_params

@@ -1,0 +1,8 @@
+<%= turbo_stream.before "chats" do %>
+  <script>
+    history.pushState(null, "", "/");
+    document.getElementById("chats").reload();
+  </script>
+<% end %>
+
+<%= turbo_stream.update "chat_window", partial: 'main/chat_container' %>

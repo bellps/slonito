@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import * as flowbite from 'flowbite';
+import { Collapse } from 'flowbite';
 
 export default class extends Controller {
   static targets = ["chatItem"]
@@ -26,16 +26,7 @@ export default class extends Controller {
 
     const chatId = `chat_instance_${chatIdMatch[1]}`;
 
-    this.chatItemTargets.forEach(chatItem => {
-      chatItem.classList.remove("bg-stone-700");
-
-      let oldCollapse = new flowbite.Collapse(
-        document.getElementById(`dropdown_from_${chatItem.dataset.chatId}`),
-        chatItem
-      );
-
-      if (oldCollapse._visible) oldCollapse.collapse();
-    });
+    this.unselectChats();
 
     const activeChat = this.chatItemTargets.find(
       chatItem => chatItem.dataset.chatId === chatId
@@ -43,13 +34,7 @@ export default class extends Controller {
 
     if (!activeChat) return;
 
-    const collapse = new flowbite.Collapse(
-      document.getElementById(`dropdown_from_${chatId}`),
-      activeChat
-    )
-
-    activeChat.classList.add("bg-stone-700");
-    collapse.expand();
+    this.selectChat(activeChat);
   }
 
   handleTurboEvents() {
@@ -65,5 +50,31 @@ export default class extends Controller {
       "turbo:frame-load",
       this.handleTurboEvents.bind(this)
     );
+  }
+
+  selectChat(element) {
+    const collapse = new Collapse(
+      document.getElementById(`dropdown_from_${element.dataset.chatId}`),
+      element
+    )
+
+    element.classList.add("current", "bg-stone-700");
+
+    collapse.expand();
+  }
+
+  unselectChats() {
+    this.chatItemTargets.forEach(chatItem => {
+      if (!chatItem.classList.contains("current")) return;
+
+      chatItem.classList.remove("current", "bg-stone-700");
+
+      let oldCollapse = new Collapse(
+        document.getElementById(`dropdown_from_${chatItem.dataset.chatId}`),
+        chatItem
+      );
+
+      if (oldCollapse._visible) oldCollapse.collapse();
+    });
   }
 }

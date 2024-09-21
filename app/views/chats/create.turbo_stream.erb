@@ -1,2 +1,8 @@
-<%= turbo_stream.prepend "chats", ::ChatButtonComponent.new(chat: @chat) %>
-<%= turbo_stream.update "chat_window", ::ChatComponent.new(chat: @chat, visit: true) %>
+<%= turbo_stream.before 'chat_window' do %>
+  <script>
+    history.pushState(null, "", "<%= chat_path(@chat) %>");
+    document.getElementById("chats").reload()
+  </script>
+<% end %>
+
+<%= turbo_stream.update 'chat_window', ::ChatComponent.new(chat: @chat, visit: true) %>
