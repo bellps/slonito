@@ -1,7 +1,7 @@
 <%= helpers.turbo_stream_from "messages" %>
 
 <div id="chat_container" class="scroll-smooth snap-end w-full h-screen px-4 lg:px-12 sm:px-6 pb-10 flex-grow overflow-y-auto flex flex-col flex-1">
-  <%= render(::TopNavigationComponent.new) %>
+  <%= render(::NavbarComponent.new) %>
   <%= render(::MessageComponent.with_collection(@chat.messages)) %>
 </div>
 

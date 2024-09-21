@@ -13,7 +13,7 @@ html class="dark"
     = turbo_include_tags
     = turbo_frame_tag 'notifications'
 
-    = render(::DatabaseNavigationComponent.new)
+    = render(::SidebarComponent.new)
 
     = yield
 
