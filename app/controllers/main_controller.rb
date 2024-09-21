@@ -3,7 +3,5 @@ class MainController < ApplicationController
 
   before_action :authenticate_user!
 
-  def index
-    @chats = Chat.where(user_id: current_user.id).order(created_at: :desc)
-  end
+  def index; end
 end
