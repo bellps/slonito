@@ -789,6 +789,11 @@ hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
+highlight.js@^11.10.0:
+  version "11.10.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.10.0.tgz#6e3600dc4b33d6dc23d5bd94fbf72405f5892b92"
+  integrity sha512-SYVnVFswQER+zu1laSya563s+F8VDGt7o35d4utbamowvUNLLMovFqwCLSocpZTz3MgaSRA1IbqRWZv97dtErQ==
+
 homedir-polyfill@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/homedir-polyfill/-/homedir-polyfill-1.0.3.tgz#743298cef4e5af3e194161fbadcc2151d3a058e8"
@@ -1031,6 +1036,16 @@ longest@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-2.0.1.tgz#781e183296aa94f6d4d916dc335d0d17aefa23f8"
   integrity sha512-Ajzxb8CM6WAnFjgiloPsI3bF+WCxcvhdIG3KNA2KN962+tdBsHcuQ4k4qX/EcS/2CRkcc0iAkR956Nib6aXU/Q==
+
+marked-highlight@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/marked-highlight/-/marked-highlight-2.1.4.tgz#33d4d74b55e5acc76ee95fa5117e847795392a42"
+  integrity sha512-D1GOkcdzP+1dzjoColL7umojefFrASDuLeyaHS0Zr/Uo9jkr1V6vpLRCzfi1djmEaWyK0SYMFtHnpkZ+cwFT1w==
+
+marked@^14.1.2:
+  version "14.1.2"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-14.1.2.tgz#3cbc26b2d6832be32b75ae0746e0968c781b6156"
+  integrity sha512-f3r0yqpz31VXiDB/wj9GaOB0a2PRLQl6vJmXiFrniNwjkKdvakqJRULhjFKJpxOchlCRiG5fcacoUZY5Xa6PEQ==
 
 merge@^2.1.1:
   version "2.1.1"

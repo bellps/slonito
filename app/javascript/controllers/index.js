@@ -8,9 +8,11 @@ import ModalController from "./modal_controller"
 import ChatController from "./chat_controller"
 import ChatListController from "./chat_list_controller"
 import SchemaModalController from "./schema_modal_controller"
+import MarkdownController from "./markdown_controller"
 
 application.register("form-submission", FormSubmissionController)
 application.register("modal", ModalController)
 application.register("chat", ChatController)
 application.register("chat-list", ChatListController)
 application.register("schema-modal", SchemaModalController)
+application.register("markdown", MarkdownController)

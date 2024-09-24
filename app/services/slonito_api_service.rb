@@ -4,6 +4,8 @@ class SlonitoApiService
   end
 
   def get_response!
+    Rails.logger.debug 'Sending question to Slonito...'
+
     response = HTTParty.post(
       "#{ENV.fetch('SLONITO_API_URL')}/generate",
       {
@@ -18,9 +20,17 @@ class SlonitoApiService
       }
     )
 
-    JSON.parse(response.body)['response']
-  rescue => _e
-    "Sorry, I'm feeling a little dizzy and unable to answer you right now 😞. Please try again later!"
+    Rails.logger.debug 'Slonito answered!'
+
+    if response.code != 200
+      "Ops! I found a error: #{response['detail']}"
+    else
+      answer = JSON.parse(response.body)['response']
+
+      "\n#{answer.split("\n\n\n", 2)[1]}"
+    end
+  rescue StandardError => e
+    "Sorry, I'm feeling a little dizzy and unable to answer you right now 😞. Please try again later! (#{e})"
   end
 
   attr_reader :message
