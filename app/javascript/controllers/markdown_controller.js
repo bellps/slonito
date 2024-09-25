@@ -13,7 +13,7 @@ export default class extends Controller {
   itemTargetConnected(e) {
     this.initializeMarked()
 
-    e.innerHTML = this.marked.parse(e.innerHTML);
+    e.innerHTML = this.marked.parse(e.textContent);
   }
 
   initializeMarked() {

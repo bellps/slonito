@@ -18,7 +18,7 @@
         <span class="text-sm font-normal text-stone-500 dark:text-stone-400"><%= @chat_message.created_at.strftime('%R')%></span>
       </div>
       <p data-markdown-target="item" class="break-words text-sm font-normal py-2.5">
-        <%= @chat_message.content %>
+        <%= @chat_message.content_to_markdown %>
       </p>
     </div>
   </div>

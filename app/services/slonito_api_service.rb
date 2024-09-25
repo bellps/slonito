@@ -27,7 +27,7 @@ class SlonitoApiService
     else
       answer = JSON.parse(response.body)['response']
 
-      "\n#{answer.split("\n\n\n", 2)[1]}"
+      answer.split("\n\n\n", 2)[1]
     end
   rescue StandardError => e
     "Sorry, I'm feeling a little dizzy and unable to answer you right now 😞. Please try again later! (#{e})"

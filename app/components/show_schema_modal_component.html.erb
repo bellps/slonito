@@ -21,8 +21,9 @@
       <!-- Modal body -->
       <div class="p-4 md:p-5 space-y-4">
         <div class="w-full">
-          <div class="overflow-x-auto w-full max-h-full dark:bg-stone-800">
-            <pre><code data-schema-modal-target="content" id="code-block" class="text-sm whitespace-pre language-sql"><%= @chat.raw_schema %></code></pre>
+          <div data-schema-modal-target="content" class="overflow-x-auto w-full max-h-full dark:bg-stone-800">```sql
+<%= @chat.raw_schema %>
+```
           </div>
           <div class="absolute top-24 end-6">
             <button data-action="click->schema-modal#copy" data-schema-modal-target="copyButton"

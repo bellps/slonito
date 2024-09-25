@@ -14,4 +14,8 @@ class ChatMessage < ApplicationRecord
                         ),
                         target: 'chat_container'
   }
+
+  def content_to_markdown
+    "\n#{content}\n"
+  end
 end
