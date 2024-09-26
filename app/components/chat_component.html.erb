@@ -12,6 +12,8 @@
 <%= render(::ShowSchemaModalComponent.new(chat: @chat)) %>
 
 <script>
-  var objDiv = document.getElementById("chat_container");
-  objDiv.scrollTop = objDiv.scrollHeight;
+  document.addEventListener("turbo:load", function() {
+    const chat = document.getElementById("chat_container");
+    chat.scrollTop = chat.scrollHeight;
+  });
 </script>

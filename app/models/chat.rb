@@ -34,7 +34,7 @@ class Chat < ApplicationRecord
 
   def send_user_notification(message)
     broadcast_append_to "notifications_channel_from_user_#{user_id}",
-                        html: ApplicationController.render(SuccessToastComponent.new(message:)),
+                        renderable: SuccessToastComponent.new(message:),
                         target: 'notifications_container'
   end
 end

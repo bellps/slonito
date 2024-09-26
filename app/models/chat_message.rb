@@ -7,15 +7,25 @@ class ChatMessage < ApplicationRecord
 
   delegate :raw_schema, to: :chat, prefix: true
 
-  after_create_commit lambda {
-    broadcast_append_to "messages_from_chat_#{chat_id}",
-                        html: ApplicationController.render(
-                          MessageComponent.new(chat_message: self, go_down: true)
-                        ),
-                        target: 'chat_container'
-  }
+  after_create_commit :send_user_message
 
   def content_to_markdown
     "\n#{content}\n"
+  end
+
+  def send_user_message
+    if is_input?
+      broadcast_append_to "messages_from_chat_#{chat_id}",
+                          renderable: MessageComponent.new(chat_message: self, go_down: true),
+                          target: 'chat_container'
+                      
+      broadcast_append_to "messages_from_chat_#{chat_id}",
+                          renderable: WaitingAnswerComponent.new,
+                          target: 'chat_container'
+    else
+      broadcast_replace_to "messages_from_chat_#{chat_id}",
+                           target: 'waiting_slonito_answer',
+                           renderable: MessageComponent.new(chat_message: self, go_down: true)
+    end
   end
 end

@@ -25,9 +25,13 @@ class SlonitoApiService
     if response.code != 200
       "Ops! I found a error: #{response['detail']}"
     else
-      answer = JSON.parse(response.body)['response']
+      answer = JSON.parse(response.body)['response']&.split('<end_of_turn>')&.last&.presence
 
-      answer.split('<end_of_turn>')[1]
+      if answer.present? && answer != "\n<eos>"
+        answer
+      else
+        "Oops! I couldn't find an answer for that 🤨. Can you please ask me again, with more details?"
+      end
     end
   rescue StandardError => e
     "Sorry, I'm feeling a little dizzy and unable to answer you right now 😞. Please try again later! (#{e})"
