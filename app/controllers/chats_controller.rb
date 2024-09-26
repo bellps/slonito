@@ -1,6 +1,5 @@
 class ChatsController < ApplicationController
   layout false
-  layout 'main', except: :index
 
   before_action :authenticate_user!
 
@@ -17,7 +16,7 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html
+      format.html { render :show, layout: 'main' }
     end
   end
 

@@ -1,5 +1,5 @@
 class ChatsMessagesController < ApplicationController
-  layout 'main'
+  layout false
 
   before_action :authenticate_user!
 

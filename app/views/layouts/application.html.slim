@@ -3,6 +3,9 @@ html class='h-full dark'
   head
     title Slonito
     meta name="viewport" content="width=device-width,initial-scale=1"
+    meta name="turbo-cache-control" content="no-cache"
+    meta name="turbo-refresh-method" content="morph"
+    meta name="turbo-visit-control" content="reload"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
