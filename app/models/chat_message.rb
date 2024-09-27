@@ -15,8 +15,10 @@ class ChatMessage < ApplicationRecord
 
   def send_user_message
     if is_input?
+      broadcast_remove_to "messages_from_chat_#{chat_id}", target: 'waiting_slonito_answer'
+  
       broadcast_append_to "messages_from_chat_#{chat_id}",
-                          renderable: MessageComponent.new(chat_message: self, go_down: true),
+                          renderable: UserMessageComponent.new(chat_message: self),
                           target: 'chat_container'
                       
       broadcast_append_to "messages_from_chat_#{chat_id}",
@@ -25,7 +27,7 @@ class ChatMessage < ApplicationRecord
     else
       broadcast_replace_to "messages_from_chat_#{chat_id}",
                            target: 'waiting_slonito_answer',
-                           renderable: MessageComponent.new(chat_message: self, go_down: true)
+                           renderable: SlonitoMessageComponent.new(chat_message: self)
     end
   end
 end

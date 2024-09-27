@@ -34,7 +34,7 @@ class SlonitoApiService
       end
     end
   rescue StandardError => e
-    "Sorry, I'm feeling a little dizzy and unable to answer you right now 😞. Please try again later! (#{e})"
+    "Sorry, I'm feeling a little dizzy and unable to answer you right now 😞. Please try again later!\n\n _(Details for nerds: #{e})_"
   end
 
   attr_reader :message

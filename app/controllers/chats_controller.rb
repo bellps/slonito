@@ -12,7 +12,7 @@ class ChatsController < ApplicationController
   end
 
   def show
-    @chat = Chat.where(id: params[:id], user_id: current_user.id).first!
+    @chat = Chat.where(id: params[:id], user_id: current_user.id).includes(:messages).first!
 
     respond_to do |format|
       format.turbo_stream

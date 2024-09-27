@@ -1,6 +1,6 @@
 class Chat < ApplicationRecord
   belongs_to :user
-  has_many :messages, class_name: 'ChatMessage', dependent: :destroy
+  has_many :messages, -> { order(created_at: :asc) }, class_name: 'ChatMessage', dependent: :destroy
 
   normalize_attributes :name, with: %i[blank squish]
   normalize_attributes :raw_schema, with: %i[blank strip]
