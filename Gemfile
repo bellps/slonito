@@ -16,6 +16,7 @@ gem 'pg', '~> 1.1'
 gem 'pg_query', '~> 5.1'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
+gem 'redis'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'slim-rails', '~> 3.6', '>= 3.6.3'
