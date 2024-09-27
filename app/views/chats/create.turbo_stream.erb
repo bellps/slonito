@@ -5,4 +5,4 @@
   </script>
 <% end %>
 
-<%= turbo_stream.update 'chat_window', ::ChatComponent.new(chat: @chat, visit: true) %>
+<%= turbo_stream.replace 'chat_window', ::ChatComponent.new(chat: @chat) %>

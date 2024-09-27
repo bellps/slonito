@@ -1,51 +1,49 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "content", "submitButton" ]
-
   connect() {
-    this.element.addEventListener(
-      "turbo:submit-start",
-      this.handleSubmitStart.bind(this)
+    document.addEventListener(
+      'turbo:load',
+      this.scrollAndStartObserver.bind(this)
     );
 
-    this.element.addEventListener(
-      "turbo:submit-end",
-      this.handleSubmitEnd.bind(this)
+    document.addEventListener(
+      'turbo:before-render',
+      this.scrollToBottom.bind(this)
     );
   }
 
-  send(e) {
-    e.preventDefault()
+  scrollAndStartObserver() {
+    if (this.element) {
+      // Chama a função de scroll ao carregar
+      this.scrollToBottom();
 
-    if (this.contentTarget.value.trim() != '') {
-      this.element.requestSubmit()
+      // Criar um observador de mutações
+      const observer = new MutationObserver(() => {
+        this.scrollToBottom();
+      });
 
-      this.contentTarget.value = ''
+      // Configura o observador para observar adições de filhos
+      observer.observe(this.element, {
+        childList: true, // Observa mudanças na lista de filhos
+        subtree: true // Observa também os filhos dos filhos
+      });
     }
   }
 
-  handleSubmitStart() {
-    this.contentTarget.disabled = true;
-    this.submitButtonTarget.disabled = true;
-    this.contentTarget.placeholder = 'Slonito is typing...';
-  }
-
-  handleSubmitEnd() {
-    this.contentTarget.disabled = false;
-    this.submitButtonTarget.disabled = false;
-    this.contentTarget.placeholder = 'Message Slonito';
+  scrollToBottom() {
+    if (this.element) this.element.scrollTop = this.element.scrollHeight;
   }
 
   disconnect() {
-    this.element.removeEventListener(
-      "turbo:submit-start",
-      this.handleSubmitStart.bind(this)
+    document.removeEventListener(
+      'turbo:load', 
+      this.scrollAndStartObserver.bind(this)
     );
 
-    this.element.removeEventListener(
-      "turbo:submit-end",
-      this.handleSubmitEnd.bind(this)
+    document.removeEventListener(
+      'turbo:before-render',
+      this.scrollToBottom.bind(this)
     );
   }
 }

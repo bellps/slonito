@@ -1,45 +1,16 @@
-<%= helpers.turbo_stream_from "messages_from_chat_#{@chat.id}" %>
+<turbo-frame id='chat_window' class="flex flex-col flex-1 h-screen">
+  <%= helpers.turbo_stream_from "messages_from_chat_#{@chat.id}" %>
 
-<div data-controller="markdown" id="chat_container" class="scroll-smooth snap-end w-full h-screen px-4 lg:px-12 sm:px-6 pb-10 flex-grow overflow-y-auto flex flex-col flex-1">
-  <%= render(::NavbarComponent.new) %>
-  <%= render(::MessageComponent.with_collection(@chat.messages)) %>
+  <div data-controller="markdown chat" id="chat_container" class="scroll-smooth snap-end w-full h-screen px-4 lg:px-12 sm:px-6 pb-10 flex-grow overflow-y-auto flex flex-col flex-1">
+    <%= render(::NavbarComponent.new) %>
+    <%= render(::MessageComponent.with_collection(@chat.messages)) %>
 
-  <turbo-frame id='waiting_slonito_answer'></turbo-frame>
-</div>
+    <turbo-frame id='waiting_slonito_answer'></turbo-frame>
+  </div>
 
-<div class="bg-opacity-20 w-full flex-none py-6 max-w-7xl mx-auto pt-0 pb-5 md:pb-5 sm:pb-6 sm:px-6 md:px-6">
-  <%= render(::MessageInputComponent.new(chat: @chat)) %>
-</div>
+  <div class="bg-opacity-20 w-full flex-none py-6 max-w-7xl mx-auto pt-0 pb-5 md:pb-5 sm:pb-6 sm:px-6 md:px-6">
+    <%= render(::MessageInputComponent.new(chat: @chat)) %>
+  </div>
 
-<%= render(::ShowSchemaModalComponent.new(chat: @chat)) %>
-
-<script>
-  document.addEventListener('turbo:load', function() {
-    const chatContainer = document.getElementById('chat_container');
-    if (chatContainer) {
-      // Chama a função de scroll ao carregar
-      scrollToBottom();
-
-      // Criar um observador de mutações
-      const observer = new MutationObserver(() => {
-        scrollToBottom();
-      });
-
-      // Configura o observador para observar adições de filhos
-      observer.observe(chatContainer, {
-        childList: true, // Observa mudanças na lista de filhos
-        subtree: true // Observa também os filhos dos filhos
-      });
-    }
-  });
-
-  document.addEventListener('turbo:before-render', function() {
-    scrollToBottom();
-  });
-
-  function scrollToBottom() {
-    const chatContainer = document.getElementById('chat_container');
-
-    if (chatContainer) chatContainer.scrollTop = chatContainer.scrollHeight;
-  }
-</script>
+  <%= render(::ShowSchemaModalComponent.new(chat: @chat)) %>
+</turbo-frame>
