@@ -58,19 +58,49 @@
               </button>
             </h2>
             <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
-              <div class="py-5">
-                <p class="mb-2 text-stone-500 dark:text-stone-400">To do!</p>
+              <div class="py-5 border-b border-stone-200 dark:border-stone-600">
+                <p class="mb-2 text-stone-500 dark:text-stone-400">
+                  To get the best results from Slonito, it’s essential to create clear and precise prompts. When asking the assistant to generate SQL queries, here are a few tips to keep in mind:
+                </p>
+                <p class="mb-2 text-stone-500 dark:text-stone-400">
+                  <b>Be Clear and Specific:</b> Clearly state what you need, providing as much context as possible. The assistant works best when it has a clear idea of the desired output.
+                </p>
+                <p class="mb-2 text-stone-500 dark:text-stone-400">
+                  <b>Provide Relevant Information:</b> If your query is related to a specific database structure or schema, always include this information. This helps the assistant generate responses that align with the data structure you're working with.
+                </p>
+                <p class="mb-2 text-stone-500 dark:text-stone-400">
+                  <b>Use Natural Language:</b> Write your prompts as if you were explaining the task to a colleague. Avoid unnecessary complexity, but ensure that your request is detailed enough for the model to understand.
+                </p>
+                <p class="mb-2 text-stone-500 dark:text-stone-400">
+                  <b>Ask One Thing at a Time:</b> Keep your prompts focused on a single task or question. Complex, multi-step prompts can lead to confusion and less accurate responses.
+                </p>
+                <p class="mb-4 text-stone-500 dark:text-stone-400">
+                  <b>Check and Refine:</b> If Slonito’s output doesn’t meet your expectations, try refining your prompt by being even more specific or rephrasing your question.
+                </p>
+
+                <h3>Good ✅</h3>
+                <p class="mb-2 text-stone-500 dark:text-stone-400">
+                  <em>"Generate a SQL query to retrieve the names and salaries of employees from the 'employees' table, where the salary is greater than 50,000."</em>
+                </p>
+                <h3>Bad ❌</h3>
+                <p class="mb-4 text-stone-500 dark:text-stone-400">
+                  <em>"Give me some data."</em>
+                </p>
+
+                <p class="mb-2 text-stone-500 dark:text-stone-400">
+                  By following these guidelines and using clear prompts, you’ll improve the quality of Slonito's responses and make your interactions with the system more productive.
+                </p>
               </div>
             </div>
             <h2 id="accordion-flush-heading-4">
-              <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-stone-500 dark:text-stone-400 gap-3 border-b border-stone-200 dark:border-stone-600" data-accordion-target="#accordion-flush-body-3" aria-expanded="false" aria-controls="accordion-flush-body-3">
+              <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-stone-500 dark:text-stone-400 gap-3 border-b border-stone-200 dark:border-stone-600" data-accordion-target="#accordion-flush-body-4" aria-expanded="false" aria-controls="accordion-flush-body-4">
                 <span>Which LLM is Slonito based on?</span>
                 <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
                 </svg>
               </button>
             </h2>
-            <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-3">
+            <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-4">
               <div class="py-5">
                 <p class="mb-2 text-stone-500 dark:text-stone-400">Currently, Slonito uses <a href="https://huggingface.co/google/gemma-2-2b-it" target="_blank" class="text-rose-600 dark:text-rose-500 hover:underline">Gemma 2</a> to generate its queries.</p>
               </div>
