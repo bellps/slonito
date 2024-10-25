@@ -5,8 +5,6 @@ export default class extends Controller {
   static targets = ["chatItem"]
 
   connect() {
-    this.updateActiveChat();
-
     document.addEventListener(
       "turbo:visit",
       this.handleTurboEvents.bind(this)
@@ -26,15 +24,21 @@ export default class extends Controller {
 
     const chatId = `chat_instance_${chatIdMatch[1]}`;
 
-    this.unselectChats();
+    var currentChat = window.FlowbiteInstances.getInstance('Collapse', `dropdown_from_${chatId}`);
 
-    const activeChat = this.chatItemTargets.find(
-      chatItem => chatItem.dataset.chatId === chatId
-    );
+    if (!currentChat) return;
 
-    if (!activeChat) return;
+    currentChat.expand();
 
-    this.selectChat(activeChat);
+    this.chatItemTargets.forEach(function (chatItem) {
+      var dropdownId = `dropdown_from_${chatItem.dataset.chatId}`
+
+      if (window.FlowbiteInstances.instanceExists('Collapse', dropdownId)) {
+        var chat = window.FlowbiteInstances.getInstance('Collapse', dropdownId)
+
+        if (chat != currentChat) chat.collapse()
+      }
+    })
   }
 
   handleTurboEvents() {
@@ -52,29 +56,70 @@ export default class extends Controller {
     );
   }
 
-  selectChat(element) {
-    const collapse = new Collapse(
-      document.getElementById(`dropdown_from_${element.dataset.chatId}`),
-      element
-    )
+  chatItemTargetConnected(chatItem) {
+    const currentUrl = window.location.pathname;
+    const chatIdMatch = currentUrl.match(/\/chats\/(\d+)/);
+    var item;
 
-    element.classList.add("current", "bg-stone-700");
+    if (!chatIdMatch) return;
 
-    collapse.expand();
+    const chatId = `chat_instance_${chatIdMatch[1]}`;
+
+    var controller = this;
+
+    var dropdownId = `dropdown_from_${chatItem.dataset.chatId}`
+
+    if (!window.FlowbiteInstances.instanceExists('Collapse', dropdownId)) {
+      var dropdown = document.getElementById(`dropdown_from_${chatItem.dataset.chatId}`);
+      var options = {
+        onCollapse: (callback) => {
+          controller.unselectChat(callback)
+        },
+        onExpand: (callback) => {
+          controller.selectChat(callback)
+        }
+      };
+
+      item = new Collapse(dropdown, chatItem, options);
+
+      window.FlowbiteInstances.addInstance('Collapse', item, `dropdown_from_${chatItem.dataset.chatId}`)
+    } else {
+      item = window.FlowbiteInstances.getInstance('Collapse', dropdownId)
+    }
+
+    if (chatId == chatItem.dataset.chatId) item.expand();
   }
 
-  unselectChats() {
-    this.chatItemTargets.forEach(chatItem => {
-      if (!chatItem.classList.contains("current")) return;
+  chatItemTargetDisconnected(chatItem) {
+    var dropdownId = `dropdown_from_${chatItem.dataset.chatId}`
+    
+    if (window.FlowbiteInstances.instanceExists('Collapse', dropdownId)) {
+      window.FlowbiteInstances.destroyAndRemoveInstance('Collapse', `dropdown_from_${chatItem.dataset.chatId}`)
+    }
+  }
 
-      chatItem.classList.remove("current", "bg-stone-700");
+  getCurrentChatId() {
+    const currentUrl = window.location.pathname;
+    const chatIdMatch = currentUrl.match(/\/chats\/(\d+)/);
 
-      let oldCollapse = new Collapse(
-        document.getElementById(`dropdown_from_${chatItem.dataset.chatId}`),
-        chatItem
-      );
+    if (chatIdMatch) {
+      
+    }
 
-      if (oldCollapse._visible) oldCollapse.collapse();
-    });
+      return `chat_instance_${chatIdMatch[1]}`;
+  }
+
+  selectChat(callback) {
+    callback._triggerEl.classList.add("current", "bg-stone-700");
+    const iconEl = callback._triggerEl.querySelector(".arrow-icon");
+
+    iconEl.classList.add('rotate-180')
+  }
+
+  unselectChat(callback) {
+    callback._triggerEl.classList.remove("current", "bg-stone-700");
+    const iconEl = callback._triggerEl.querySelector(".arrow-icon");
+
+    iconEl.classList.remove('rotate-180')
   }
 }
