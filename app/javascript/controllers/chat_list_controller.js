@@ -17,12 +17,9 @@ export default class extends Controller {
   }
 
   updateActiveChat() {
-    const currentUrl = window.location.pathname;
-    const chatIdMatch = currentUrl.match(/\/chats\/(\d+)/);
+    const chatId = this.getCurrentChatId();
 
-    if (!chatIdMatch) return;
-
-    const chatId = `chat_instance_${chatIdMatch[1]}`;
+    if (!chatId) return;
 
     var currentChat = window.FlowbiteInstances.getInstance('Collapse', `dropdown_from_${chatId}`);
 
@@ -57,14 +54,7 @@ export default class extends Controller {
   }
 
   chatItemTargetConnected(chatItem) {
-    const currentUrl = window.location.pathname;
-    const chatIdMatch = currentUrl.match(/\/chats\/(\d+)/);
     var item;
-
-    if (!chatIdMatch) return;
-
-    const chatId = `chat_instance_${chatIdMatch[1]}`;
-
     var controller = this;
 
     var dropdownId = `dropdown_from_${chatItem.dataset.chatId}`
@@ -87,7 +77,7 @@ export default class extends Controller {
       item = window.FlowbiteInstances.getInstance('Collapse', dropdownId)
     }
 
-    if (chatId == chatItem.dataset.chatId) item.expand();
+    if (this.getCurrentChatId() == chatItem.dataset.chatId) item.expand();
   }
 
   chatItemTargetDisconnected(chatItem) {
@@ -102,11 +92,9 @@ export default class extends Controller {
     const currentUrl = window.location.pathname;
     const chatIdMatch = currentUrl.match(/\/chats\/(\d+)/);
 
-    if (chatIdMatch) {
-      
-    }
+    if (!chatIdMatch) return undefined;
 
-      return `chat_instance_${chatIdMatch[1]}`;
+    return `chat_instance_${chatIdMatch[1]}`;
   }
 
   selectChat(callback) {
