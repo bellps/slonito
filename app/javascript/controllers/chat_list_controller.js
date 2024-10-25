@@ -70,7 +70,7 @@ export default class extends Controller {
     var dropdownId = `dropdown_from_${chatItem.dataset.chatId}`
 
     if (!window.FlowbiteInstances.instanceExists('Collapse', dropdownId)) {
-      var dropdown = document.getElementById(`dropdown_from_${chatItem.dataset.chatId}`);
+      var dropdown = document.getElementById(dropdownId);
       var options = {
         onCollapse: (callback) => {
           controller.unselectChat(callback)
@@ -82,7 +82,7 @@ export default class extends Controller {
 
       item = new Collapse(dropdown, chatItem, options);
 
-      window.FlowbiteInstances.addInstance('Collapse', item, `dropdown_from_${chatItem.dataset.chatId}`)
+      window.FlowbiteInstances.addInstance('Collapse', item, dropdownId)
     } else {
       item = window.FlowbiteInstances.getInstance('Collapse', dropdownId)
     }
@@ -94,7 +94,7 @@ export default class extends Controller {
     var dropdownId = `dropdown_from_${chatItem.dataset.chatId}`
     
     if (window.FlowbiteInstances.instanceExists('Collapse', dropdownId)) {
-      window.FlowbiteInstances.destroyAndRemoveInstance('Collapse', `dropdown_from_${chatItem.dataset.chatId}`)
+      window.FlowbiteInstances.destroyAndRemoveInstance('Collapse', dropdownId)
     }
   }
 
