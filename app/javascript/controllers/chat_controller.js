@@ -1,7 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  connect() {
+  static targets = ["chatWindow"]
+
+  chatWindowTargetConnected() {
+    this.scrollAndStartObserver()
+
     document.addEventListener(
       'turbo:load',
       this.scrollAndStartObserver.bind(this)
@@ -13,8 +17,20 @@ export default class extends Controller {
     );
   }
 
+  chatWindowTargetDisconnect() {
+    document.removeEventListener(
+      'turbo:load',
+      this.scrollAndStartObserver.bind(this)
+    );
+
+    document.removeEventListener(
+      'turbo:before-render',
+      this.scrollToBottom.bind(this)
+    );
+  }
+
   scrollAndStartObserver() {
-    if (this.element) {
+    if (this.chatWindowTarget) {
       // Chama a função de scroll ao carregar
       this.scrollToBottom();
 
@@ -24,7 +40,7 @@ export default class extends Controller {
       });
 
       // Configura o observador para observar adições de filhos
-      observer.observe(this.element, {
+      observer.observe(this.chatWindowTarget, {
         childList: true, // Observa mudanças na lista de filhos
         subtree: true // Observa também os filhos dos filhos
       });
@@ -32,18 +48,8 @@ export default class extends Controller {
   }
 
   scrollToBottom() {
-    if (this.element) this.element.scrollTop = this.element.scrollHeight;
-  }
-
-  disconnect() {
-    document.removeEventListener(
-      'turbo:load', 
-      this.scrollAndStartObserver.bind(this)
-    );
-
-    document.removeEventListener(
-      'turbo:before-render',
-      this.scrollToBottom.bind(this)
-    );
+    if (this.chatWindowTarget) {
+      this.chatWindowTarget.scrollTop = this.chatWindowTarget.scrollHeight;
+    }
   }
 }

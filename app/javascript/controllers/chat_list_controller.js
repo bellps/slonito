@@ -54,7 +54,7 @@ export default class extends Controller {
 
   chatItemTargetDisconnected(chatItem) {
     const dropdownId = `dropdown_from_${chatItem.dataset.chatId}`;
-    
+
     if (window.FlowbiteInstances.instanceExists('Collapse', dropdownId)) {
       window.FlowbiteInstances.destroyAndRemoveInstance('Collapse', dropdownId);
     }
