@@ -36,7 +36,7 @@ git clone https://github.com/your-username/slonito-frontend.git
 cd slonito-frontend
 bundle install
 rails db:setup
-rails server
+foreman start
 ```
 
 Update your .env or credentials with the proper API endpoint:
