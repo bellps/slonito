@@ -32,8 +32,8 @@ This repository contains only the frontend, developed with Ruby on Rails, respon
 ## Setup
 
 ```bash
-git clone https://github.com/your-username/slonito-frontend.git
-cd slonito-frontend
+git clone https://github.com/bellps/slonito.git
+cd slonito
 bundle install
 rails db:setup
 foreman start
