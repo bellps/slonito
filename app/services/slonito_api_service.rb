@@ -25,7 +25,7 @@ class SlonitoApiService
     if response.code != 200
       "Ops! I found a error: #{response['detail']}"
     else
-      answer = JSON.parse(response.body)['response']&.match(/<start_of_turn>model\s*(.*?)\s*<end_of_turn>/mi)&.[](1)&.presence
+      answer = JSON.parse(response.body)['response']&.presence
 
       if answer.present? && answer != "```sql\n```"
         answer
